@@ -20,3 +20,10 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(2e660e16-a79b-4679-9b65-ac659a6d5bc5)'
+    appType: 'webAppLinux'
+    WebAppName: 'fleetman-webapp'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.war'
