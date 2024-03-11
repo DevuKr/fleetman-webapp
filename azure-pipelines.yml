@@ -20,6 +20,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: CmdLine@2
+  inputs:
+    script: 'curl -v -u pradeep:pradeep -T **/*.war http://34.125.242.5:8080/manager/text/deploy?path=/fleetman-webapp'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
